@@ -17,8 +17,12 @@ services:
       - db
     links:
       - db
+    volumes:
+      - habrdb-data:/var/lib/postgresql/data
     environment:
       DB_ROOT_PASSWORD: postgres
       DB_ROOT_USER: postgres
     ports:
       - "8080:8080"
+volumes:
+  habrdb-data:
