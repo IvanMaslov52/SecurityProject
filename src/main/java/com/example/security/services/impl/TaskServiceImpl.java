@@ -21,8 +21,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import static com.example.security.Specification.TaskSpecification.*;
-import static org.apache.logging.log4j.ThreadContext.isEmpty;
+import static com.example.security.specification.TaskSpecification.*;
 
 
 @Service

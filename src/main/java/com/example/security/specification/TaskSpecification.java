@@ -1,4 +1,4 @@
-package com.example.security.Specification;
+package com.example.security.specification;
 
 import com.example.security.dao.Task;
 import com.example.security.dao.Task_;
