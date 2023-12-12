@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://db:5432/$DB_POSTGRES
-    username: $DB_ROOT_USER
-    password: $DB_ROOT_PASSWORD
+    url: jdbc:postgresql://db:5432/postgres
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:
@@ -11,4 +11,3 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
-

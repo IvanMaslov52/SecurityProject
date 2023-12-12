@@ -25,21 +25,22 @@ public class TaskController {
     private final TaskService service;
 
     @GetMapping("/{id}")
-    @SecurityRequirement(name="Bearer Authentication")
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<Task> getTask(@PathVariable("id") Integer id) {
         return service.getTask(id);
     }
 
     @PostMapping
-    @SecurityRequirement(name="Bearer Authentication")
+    @SecurityRequirement(name = "Bearer Authentication")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTask(@AuthenticationPrincipal UserDetails userDetails, @RequestBody TaskCreateRequest taskCreateRequest) {
+    public void createTask(@AuthenticationPrincipal UserDetails userDetails,
+                           @RequestBody TaskCreateRequest taskCreateRequest) {
         service.createTask(userDetails, taskCreateRequest);
     }
 
 
     @GetMapping()
-    @SecurityRequirement(name="Bearer Authentication")
+    @SecurityRequirement(name = "Bearer Authentication")
     public Page<Task> getAllTasks(@AuthenticationPrincipal UserDetails userDetails,
                                   @RequestParam(value = "offset", defaultValue = "0") Integer offset,
                                   @RequestParam(value = "limit", defaultValue = "20") Integer limit) {
@@ -47,7 +48,7 @@ public class TaskController {
     }
 
     @GetMapping("/filter")
-    @SecurityRequirement(name="Bearer Authentication")
+    @SecurityRequirement(name = "Bearer Authentication")
     public Page<Task> filter(@AuthenticationPrincipal UserDetails userDetails,
                              @RequestParam(value = "offset", defaultValue = "0") Integer offset,
                              @RequestParam(value = "limit", defaultValue = "20") Integer limit,
@@ -57,13 +58,13 @@ public class TaskController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @SecurityRequirement(name="Bearer Authentication")
+    @SecurityRequirement(name = "Bearer Authentication")
     public void delete(@PathVariable("id") Integer id, @AuthenticationPrincipal UserDetails userDetails) {
         service.deleteTask(id, userDetails);
     }
 
     @PutMapping("/{id}")
-    @SecurityRequirement(name="Bearer Authentication")
+    @SecurityRequirement(name = "Bearer Authentication")
     public void delete(@PathVariable("id") Integer id, @AuthenticationPrincipal UserDetails userDetails, @RequestBody TaskUpdateRequest taskUpdateRequest) {
         service.updateTask(id, userDetails, taskUpdateRequest);
     }

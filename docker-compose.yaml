@@ -1,22 +1,24 @@
-version: '3.8'
-services:
+version: '3'
 
-  securityserver:
+services:
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
+  app:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: 'securityserver'
-    ports:
-      - "8080:8080"
+    container_name: app
     depends_on:
       - db
+    links:
+      - db
     environment:
-      - spring.datasource.url=jdbc:postgresql://db:5432/jwt_security
-  db:
-    container_name: db
-    image: postgres:latest
-    user: postgres
-    environment:
-      - POSTGRES_PASSWORD = $DB_ROOT_PASSWORD
-      - POSTGRES_USER = $DB_ROOT_USER
-      - POSTGRES_DB = $DB_POSTGRES
+      DB_ROOT_PASSWORD: postgres
+      DB_ROOT_USER: postgres
+    ports:
+      - "8080:8080"
