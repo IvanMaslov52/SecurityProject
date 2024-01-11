@@ -17,10 +17,10 @@ public class Comment {
     private Integer id;
 
     private String comment;
-    @ManyToOne
-    @JoinColumn(name = "user_id",referencedColumnName="user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
     private Task task;
 }

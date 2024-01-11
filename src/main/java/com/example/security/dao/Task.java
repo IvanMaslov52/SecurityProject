@@ -25,11 +25,11 @@ public class Task {
 
     private String priority;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id",referencedColumnName="user_id")
     private User author;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "executor_id",referencedColumnName="user_id")
     private User executor;
 
